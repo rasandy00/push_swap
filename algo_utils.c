@@ -6,7 +6,7 @@
 /*   By: andriamr <andriamr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 11:36:30 by andriamr          #+#    #+#             */
-/*   Updated: 2025/06/29 15:32:05 by andriamr         ###   ########.fr       */
+/*   Updated: 2025/07/03 13:59:34 by andriamr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,21 @@ t_list	*reverse_rotate(t_list **list)
 	first = *list;
 	first = add_list_first(&first, tmp);
 	return (first);
+}
+
+int	list_rank(t_list **list, int val)
+{
+	t_list	*a;
+	int		rank;
+
+	a = *list;
+	rank = 0;
+	while (a != NULL)
+	{
+		if (val > a->val)
+			rank++;
+		a = a->next;
+	}
+	// free_list(list);
+	return (rank + 1);
 }
