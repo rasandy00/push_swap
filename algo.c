@@ -6,7 +6,7 @@
 /*   By: andriamr <andriamr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:25:59 by andriamr          #+#    #+#             */
-/*   Updated: 2025/07/03 13:52:28 by andriamr         ###   ########.fr       */
+/*   Updated: 2025/07/04 15:21:56 by andriamr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,3 +63,103 @@ void	algo1(t_list **list_a, t_list **list_b)
 			pa (&a, &b);
 	}
 }
+
+int	max_val(t_list **list_a)
+{
+	t_list	*a;
+	t_list	*list_rank;
+	t_list	*tmp;
+	int		list_size;
+	int		val_max;
+
+	val_max = 0;
+	list_rank = NULL;
+	a = *list_a;
+	list_rank = list_to_rank(list_a);
+	list_size = len_list(list_a);
+	tmp = list_rank;
+	while (list_rank->val != list_size)
+	{	
+		list_rank = list_rank->next;
+		a = a->next;
+	}
+	val_max = a->val;
+	a = *list_a;
+	free_list(&tmp);
+	return (val_max);
+}
+
+int	min_val(t_list **list_a)
+{
+	t_list	*a;
+	t_list	*tmp;
+	t_list	*list_rank;
+	int		val_min;
+	
+	a = *list_a;
+	val_min = 0;
+	list_rank = list_to_rank(&a);
+	tmp =list_rank;
+	while (list_rank->val != 1)
+	{
+		list_rank = list_rank->next;
+		a = a->next;
+	}
+	val_min = a->val;
+	a =*list_a;
+	free_list(&tmp);
+	return (val_min);
+}
+
+int	median_val(t_list **list_a)
+{
+	t_list	*a;
+	t_list	*tmp;
+	t_list	*list_rank;
+	int		median;
+	int		list_size;
+
+	a = *list_a;
+	list_size = len_list(&a);
+	median = list_size / 2;
+	list_rank = list_to_rank(&a);
+	tmp = list_rank;
+	while (list_rank->val != median)
+	{
+		list_rank = list_rank->next;
+		a =	a->next;
+	}
+	median = a->val;
+	a =	*list_a;
+	free_list(&tmp);
+	return (median);
+}
+
+void	algo_by3(t_list **list_a, t_list **list_b)
+{
+	t_list	*a;
+	t_list	*b;
+	int		pivot;
+	int		len;
+
+	pivot = 3;
+	b = list_to_rank(list_a);
+	a = list_to_rank(list_b);
+	len = len_list(&a);
+	while(len >= 0)
+	{
+		printf_list(&a,&b);
+		if (len_list(&b) == 3)
+			break;
+		if(a->val > pivot)
+			ra(&a);
+		else
+		 pb(&a, &b);
+		len--;
+	}
+	sort_3b(&b);
+	
+	printf_list(&a,&b);
+
+}
+

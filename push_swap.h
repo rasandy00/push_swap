@@ -6,7 +6,7 @@
 /*   By: andriamr <andriamr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 16:14:25 by andriamr          #+#    #+#             */
-/*   Updated: 2025/07/03 12:19:03 by andriamr         ###   ########.fr       */
+/*   Updated: 2025/07/04 15:51:39 by andriamr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,28 @@ int				len_list(t_list **list);
 int				val_last_list(t_list **list);
 int				list_rank(t_list **list, int val);
 t_list			*list_to_rank(t_list **list);
+int				max_val(t_list **list_a);
+int				min_val(t_list **list_a);
+int				median_val(t_list **list_a);
+int				index_of_max(t_list **list);
+int				index_of_min(t_list **list_a);
 //algo
 t_list			*swap_fisrt(t_list **list);
 void			push_list(t_list **list_remove, t_list **list_add);
 t_list			*rotate(t_list **list);
 t_list			*reverse_rotate(t_list **list);
+void			sort_3a(t_list **list_a);
+void			sort_3b(t_list **list_b);
+t_list			*join_list(t_list **list1, t_list **list2);
+void 			algo_ridicul(t_list **list_a, t_list **list_b);
+
 //chek_error
 int				chek_error_argv(int argc, const char **argv);
 int				check_repeat(t_list **nbr);
 int				check_sort(t_list **list_a);
 int				check_reverse_sort(t_list **list_b);
 int				list_is_unic(t_list **list);
+
 // instruction
 void			sa(t_list **list_a);
 void			sb(t_list **list_b);
@@ -65,6 +76,10 @@ void			pb(t_list **list_a, t_list **list_b);
 void			ra(t_list **list_a);
 void			rb(t_list **list_b);
 void			rr(t_list **list_a, t_list **list_b);
+void			rra(t_list **list_a);
+void			rrb(t_list **list_b);
+void			rrr(t_list **list_a, t_list **list_b);
 void			algo1(t_list **list_a, t_list **list_b);
+void			algo_by3(t_list **list_a, t_list **list_b);
 
 #endif

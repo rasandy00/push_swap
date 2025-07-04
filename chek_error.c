@@ -6,7 +6,7 @@
 /*   By: andriamr <andriamr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 09:37:49 by andriamr          #+#    #+#             */
-/*   Updated: 2025/07/03 13:44:34 by andriamr         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:02:18 by andriamr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,11 @@ int	check_sort(t_list **list_a)
 			if (val <= a->val)
 				a = a->next;
 			else
-				return (printf("TSY MILAHATRA\n"), 0);
+				return (0);
 		}
 		tmp = tmp->next;
 	}
-	return (printf ("efa milahatra"), 1);
+	return (1);
 }
 
 int	list_is_unic(t_list **list)
@@ -119,9 +119,9 @@ int	check_reverse_sort(t_list **list_b)
 			if (val >= b->val)
 				b = b->next;
 			else
-				return (printf(" TSY milahatra miverina\n"), 0);
+				return (0);
 		}
 		tmp = tmp->next;
 	}
-	return (printf ("milahatra\n"), 1);
+	return (1);
 }
