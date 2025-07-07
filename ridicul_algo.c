@@ -6,7 +6,7 @@
 /*   By: andriamr <andriamr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 15:21:07 by andriamr          #+#    #+#             */
-/*   Updated: 2025/07/04 16:24:17 by andriamr         ###   ########.fr       */
+/*   Updated: 2025/07/07 08:59:39 by andriamr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void algo_ridicul(t_list **list_a, t_list **list_b)
 		if (tmp)
 			free_list(&tmp);
 	}
-	sort_3a(&a);
+	// sort_3a(&a);
 	while (b != NULL)
 		pa(&a, &b);
 	free_list(&a);

@@ -6,7 +6,7 @@
 /*   By: andriamr <andriamr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 16:14:25 by andriamr          #+#    #+#             */
-/*   Updated: 2025/07/04 15:51:39 by andriamr         ###   ########.fr       */
+/*   Updated: 2025/07/07 11:18:15 by andriamr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ int				min_val(t_list **list_a);
 int				median_val(t_list **list_a);
 int				index_of_max(t_list **list);
 int				index_of_min(t_list **list_a);
+int				index_of_median(t_list **list);
+int				get_index(t_list **list, int index);
+
 //algo
 t_list			*swap_fisrt(t_list **list);
 void			push_list(t_list **list_remove, t_list **list_add);
@@ -81,5 +84,8 @@ void			rrb(t_list **list_b);
 void			rrr(t_list **list_a, t_list **list_b);
 void			algo1(t_list **list_a, t_list **list_b);
 void			algo_by3(t_list **list_a, t_list **list_b);
+void			step1(t_list **list_a, t_list **list_b);
+void			step2(t_list **list_a, t_list **list_b);
+
 
 #endif
