@@ -6,7 +6,7 @@
 /*   By: andriamr <andriamr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:21:38 by andriamr          #+#    #+#             */
-/*   Updated: 2025/07/07 11:56:32 by andriamr         ###   ########.fr       */
+/*   Updated: 2025/07/09 14:39:23 by andriamr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int ac, const char **av)
 	t_list	*new;
 	int pivot;
 	int len = 0;
-	new = NULL;
+
 	list_b = NULL;
 	if (chek_error_argv(ac, av))
 		return (printf ("Error  argv"), 0);
@@ -56,23 +56,14 @@ int	main(int ac, const char **av)
 		return (printf ("un suel chiffre\n"),free_list(&list_a), 0);
 	if (check_sort(&list_a))
 		return (printf("efa OK"),free_list(&list_a) , 0);
-	// printf_list(&list_a,&list_b);
 	len = len_list(&list_a);
+	list_a = list_to_rank(&list_a);
 	while (len > 3)
 	{
 		step1(&list_a, &list_b);
 		len = len_list(&list_a);
 	}
 	sort_3a(&list_a);
-	// printf_list(&list_a,&list_b);
 	step2(&list_a, &list_b);
-	// printf ("/**/**/*/*/*/*/*/\n");
-	// printf_list(&list_a,&list_b);
-
-	// len = len_list(&list_a);
-	// pivot = get_index(&list_a, index_of_median(&list_a));
-	// printf("\n%d\n", pivot);
-	// free_list(&list_a);
-	// free_list(&list_b);
 	return (0);
 }
