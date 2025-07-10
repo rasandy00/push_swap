@@ -6,7 +6,7 @@
 /*   By: andriamr <andriamr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 08:59:49 by andriamr          #+#    #+#             */
-/*   Updated: 2025/07/07 10:24:48 by andriamr         ###   ########.fr       */
+/*   Updated: 2025/07/10 10:38:44 by andriamr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	sort_3a(t_list **list_a)
 {
 	t_list	*ranked;
 	t_list	*a;
-	
+
 	a = *list_a;
 	ranked = list_to_rank(&a);
 	if (len_list(&a) < 3 && !check_sort(&a))
@@ -31,9 +31,9 @@ void	sort_3a(t_list **list_a)
 	else if (ranked->val == 3 && val_last_list(&ranked) == 2)
 		return (ra(list_a), free_list(&ranked));
 	else if (ranked->val == 1 && val_last_list(&ranked) == 2)
-		return (ra(list_a), free_list(&ranked),sort_3a(list_a));
+		return (ra(list_a), free_list(&ranked), sort_3a(list_a));
 	else if (ranked->val == 3 && val_last_list(&ranked) == 1)
-		return (sa(list_a), free_list(&ranked),sort_3a(list_a));
+		return (sa(list_a), free_list(&ranked), sort_3a(list_a));
 }
 
 void	sort_3b(t_list **list_b)
@@ -54,9 +54,9 @@ void	sort_3b(t_list **list_b)
 	else if (ranked->val == 1 && val_last_list(&ranked) == 2)
 		return (rb(list_b), free_list(&ranked));
 	else if (ranked->val == 1 && val_last_list(&ranked) == 3)
-		return (sb(list_b), free_list(&ranked),sort_3b(list_b));
+		return (sb(list_b), free_list(&ranked), sort_3b(list_b));
 	else if (ranked->val == 3 && val_last_list(&ranked) == 2)
-		return (rrb(list_b), free_list(&ranked),sort_3b(list_b));
+		return (rrb(list_b), free_list(&ranked), sort_3b(list_b));
 }
 
 t_list	*join_list(t_list **base, t_list **to_join)
@@ -70,7 +70,7 @@ t_list	*join_list(t_list **base, t_list **to_join)
 	tmp = b;
 	while (to_join != NULL)
 	{
-		a = add_list_first(&a, b->val);	
+		a = add_list_first(&a, b->val);
 		b = b->next;
 	}
 	if (tmp)
@@ -83,7 +83,7 @@ int	index_of_max(t_list **list)
 	int		index;
 	int		len;
 	t_list	*a;
-	
+
 	index = 0;
 	len = len_list(list);
 	a = list_to_rank(list);
@@ -91,14 +91,14 @@ int	index_of_max(t_list **list)
 	{
 		index++;
 		if (a->val == len)
-			break;
+			break ;
 		a = a->next;
 	}
 	free_list(&a);
 	return (index);
 }
 
-int index_of_min(t_list **list)
+int	index_of_min(t_list **list)
 {
 	int		index;
 	t_list	*a;
@@ -109,45 +109,9 @@ int index_of_min(t_list **list)
 	{
 		index++;
 		if (a->val == 1)
-			break;
+			break ;
 		a = a->next;
 	}
 	free_list(&a);
 	return (index);
-}
-
-int	index_of_median(t_list **list)
-{
-	t_list 	*a;
-	int		len;
-	int 	index;
-	
-	index = 0;
-	a = list_to_rank(list);
-	len = len_list(&a);
-	while (a != NULL)
-	{
-		index++;
-		if (a->val == len/2)
-			break;
-		a = a->next;
-	}
-	free_list(&a);
-	return (index);
-}
-
-int	get_index(t_list **list, int index)
-{
-	t_list	*a;
-	int		i;
-	
-	i = 0;
-	a = *list;
-	while (i < index -1)
-	{
-		a = a->next;
-		i++;
-	}
-	i = a->val;
-	return (i);
 }
