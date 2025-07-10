@@ -6,12 +6,11 @@
 /*   By: andriamr <andriamr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 09:37:49 by andriamr          #+#    #+#             */
-/*   Updated: 2025/07/04 16:02:18 by andriamr         ###   ########.fr       */
+/*   Updated: 2025/07/10 15:04:15 by andriamr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int	chek_error_argv(int argc, const char **argv)
 {
@@ -100,28 +99,16 @@ int	list_is_unic(t_list **list)
 		return (0);
 }
 
-int	check_reverse_sort(t_list **list_b)
+void	free_list(t_list **list)
 {
-	t_list	*b;
+	t_list	*nbr;
 	t_list	*tmp;
-	int		val;
 
-	b = *list_b;
-	if (b == NULL)
-		return (0);
-	tmp = b;
-	while (tmp != NULL)
+	nbr = *list;
+	while (nbr != NULL)
 	{
-		val = tmp->val;
-		b = tmp;
-		while (b != NULL)
-		{
-			if (val >= b->val)
-				b = b->next;
-			else
-				return (0);
-		}
-		tmp = tmp->next;
+		tmp = nbr;
+		nbr = nbr->next;
+		remove_list_first(&tmp);
 	}
-	return (1);
 }

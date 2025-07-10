@@ -6,7 +6,7 @@
 /*   By: andriamr <andriamr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 07:37:14 by andriamr          #+#    #+#             */
-/*   Updated: 2025/07/10 11:54:50 by andriamr         ###   ########.fr       */
+/*   Updated: 2025/07/10 15:00:12 by andriamr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	step1(t_list **list_a, t_list **list_b)
 	*list_b = b;
 }
 
-void	suplement2(t_list **list_a, t_list **list_b, int max, int len)
+static void	suplement2(t_list **list_a, t_list **list_b, int max, int len)
 {
 	t_list	*a;
 	t_list	*b;
@@ -102,6 +102,27 @@ void	step2(t_list **list_a, t_list **list_b)
 		if (a->val == a->next->val + 1)
 			sa(&a);
 	}
-	list_a = &a;
-	list_b = &b;
+	free_list(&a);
+}
+
+int	len_digit(char *argv)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (ft_isspace(argv[i]))
+		i++;
+	if (argv[i] == '-' || argv[i] == '+')
+	{
+		count++;
+		i++;
+	}
+	while (ft_isdigit(argv[i]))
+	{
+		i++;
+		count++;
+	}
+	return (count);
 }

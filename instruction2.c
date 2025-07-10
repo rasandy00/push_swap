@@ -6,7 +6,7 @@
 /*   By: andriamr <andriamr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:26:22 by andriamr          #+#    #+#             */
-/*   Updated: 2025/07/03 12:19:37 by andriamr         ###   ########.fr       */
+/*   Updated: 2025/07/10 15:01:07 by andriamr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,16 @@ void	rr(t_list **list_a, t_list **list_b)
 	write(1, "rr\n", 3);
 	*list_a = a;
 	*list_b = b;
+}
+
+void	rra(t_list **list_a)
+{
+	t_list	*a;
+
+	a = *list_a;
+	if (a == NULL)
+		return ;
+	a = reverse_rotate(&a);
+	write (1, "rra\n", 4);
+	*list_a = a;
 }

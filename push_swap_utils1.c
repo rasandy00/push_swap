@@ -6,7 +6,7 @@
 /*   By: andriamr <andriamr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:14:46 by andriamr          #+#    #+#             */
-/*   Updated: 2025/06/27 15:14:46 by andriamr         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:56:54 by andriamr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ int	ft_isspace(char space)
 
 int	ft_atoi(const char *s)
 {
-	int	nb;
-	int	i;
+	long	nb;
+	int		i;
+	char	*str;
 
 	nb = 0;
 	i = 0;
+	str = (char *)s;
 	i += (s[i] == '-' || s[i] == '+');
 	while (s[i] <= '9' && s[i] >= '0')
 	{
@@ -45,6 +47,8 @@ int	len_of_int(int nb)
 	int	count;
 
 	count = 0;
+	if (nb == -2147483648)
+		return (11);
 	if (nb < 0)
 	{
 		nb = -nb;

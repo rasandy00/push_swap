@@ -6,7 +6,7 @@
 /*   By: andriamr <andriamr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 10:15:38 by andriamr          #+#    #+#             */
-/*   Updated: 2025/07/01 18:13:55 by andriamr         ###   ########.fr       */
+/*   Updated: 2025/07/10 15:03:36 by andriamr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,19 @@ t_list	*add_list_at(t_list **list, int add, int index)
 	new = creat_list(add);
 	new->next = first->next;
 	first->next = new;
+	return (first);
+}
+
+t_list	*remove_list_first(t_list **list)
+{
+	t_list	*first;
+	t_list	*tmp;
+
+	first = *list;
+	tmp = first;
+	if (tmp == NULL)
+		return (tmp);
+	first = first->next;
+	free (tmp);
 	return (first);
 }
