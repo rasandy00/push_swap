@@ -6,7 +6,7 @@
 /*   By: andriamr <andriamr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 07:37:14 by andriamr          #+#    #+#             */
-/*   Updated: 2025/07/10 11:18:57 by andriamr         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:54:50 by andriamr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,29 @@ void	step1(t_list **list_a, t_list **list_b)
 
 void	suplement2(t_list **list_a, t_list **list_b, int max, int len)
 {
-	t_list *a;
-	t_list *b;
-	
+	t_list	*a;
+	t_list	*b;
+	int		count;
+
 	a = *list_a;
 	b = *list_b;
+	count = 0;
 	while (b->val != max)
 	{
+		if (b->val == max - 1 && count != 1)
+		{
+			pa(&a, &b);
+			count++;
+		}
 		if (index_of_max(&b) < len / 2)
 			rb(&b);
 		else
-			rrb(&b);		
+			rrb(&b);
 	}
 	*list_a = a;
 	*list_b = b;
 }
+
 void	step2(t_list **list_a, t_list **list_b)
 {
 	t_list	*a;
@@ -91,6 +99,8 @@ void	step2(t_list **list_a, t_list **list_b)
 		max = max_val(&b);
 		suplement2(&a, &b, max, len);
 		pa(&a, &b);
+		if (a->val == a->next->val + 1)
+			sa(&a);
 	}
 	list_a = &a;
 	list_b = &b;
