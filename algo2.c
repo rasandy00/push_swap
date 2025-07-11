@@ -6,7 +6,7 @@
 /*   By: andriamr <andriamr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 07:37:14 by andriamr          #+#    #+#             */
-/*   Updated: 2025/07/10 15:00:12 by andriamr         ###   ########.fr       */
+/*   Updated: 2025/07/11 10:01:49 by andriamr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int	len_digit(char *argv)
 		count++;
 		i++;
 	}
-	while (ft_isdigit(argv[i]))
+	while (ft_digit(argv[i]))
 	{
 		i++;
 		count++;

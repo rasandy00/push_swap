@@ -6,13 +6,13 @@
 /*   By: andriamr <andriamr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:14:46 by andriamr          #+#    #+#             */
-/*   Updated: 2025/07/10 17:56:54 by andriamr         ###   ########.fr       */
+/*   Updated: 2025/07/11 16:47:07 by andriamr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_isdigit(int c)
+int	ft_digit(int c)
 {
 	return ((c >= '0') && (c <= '9'));
 }
@@ -32,6 +32,8 @@ int	ft_atoi(const char *s)
 	i = 0;
 	str = (char *)s;
 	i += (s[i] == '-' || s[i] == '+');
+	while (s[i] == '0')
+		i++;
 	while (s[i] <= '9' && s[i] >= '0')
 	{
 		nb = (nb * 10) + (s[i] - '0');
@@ -76,7 +78,7 @@ int	count_nbr_in_str(int ac, const char **av)
 		i = 0;
 		while (av[j][i])
 		{
-			if (ft_isdigit(av[j][i])
+			if (ft_digit(av[j][i])
 				&& (ft_isspace(av[j][i + 1])
 				|| av[j][i + 1] == '\0'))
 				count++;

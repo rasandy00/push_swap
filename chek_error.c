@@ -6,7 +6,7 @@
 /*   By: andriamr <andriamr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 09:37:49 by andriamr          #+#    #+#             */
-/*   Updated: 2025/07/10 15:04:15 by andriamr         ###   ########.fr       */
+/*   Updated: 2025/07/11 11:32:18 by andriamr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,18 @@ int	chek_error_argv(int argc, const char **argv)
 	int	ac;
 
 	ac = 1;
-	if (argc <= 1)
-		return (1);
 	while (argc > ac)
 	{
 		i = 0;
 		while (argv[ac][i])
 		{
-			if ((ft_isdigit(argv[ac][i]) || ft_isspace(argv[ac][i]))
-				|| ((argv[ac][i] == '-' && (i == 0))
-				|| (ft_isspace(argv[ac][i - 1]) && ft_isdigit(argv[ac][i + 1])))
-				|| ((argv[ac][i] == '+' && (i == 0))
-				|| (ft_isspace(argv[ac][i - 1])
-				&& ft_isdigit(argv[ac][i + 1]))))
+			if ((ft_digit(argv[ac][i]) || ft_isspace(argv[ac][i]))
+				|| ((argv[ac][i] == '-' && (i == 0
+				|| ft_isspace(argv[ac][i - 1]))
+				&& ft_digit(argv[ac][i + 1])))
+				|| ((argv[ac][i] == '+' && (i == 0
+				|| ft_isspace(argv[ac][i - 1]))
+				&& ft_digit(argv[ac][i + 1]))))
 				i++;
 			else
 				return (1);

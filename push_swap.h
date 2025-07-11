@@ -6,7 +6,7 @@
 /*   By: andriamr <andriamr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 16:14:25 by andriamr          #+#    #+#             */
-/*   Updated: 2025/07/10 17:57:27 by andriamr         ###   ########.fr       */
+/*   Updated: 2025/07/11 10:01:49 by andriamr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-int				ft_isdigit(int c);
+int				ft_digit(int c);
 int				ft_isspace(char space);
 int				ft_atoi(const char *s);
 long long		ft_atol(const char *s);

@@ -6,7 +6,7 @@
 /*   By: andriamr <andriamr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:21:38 by andriamr          #+#    #+#             */
-/*   Updated: 2025/07/10 17:57:57 by andriamr         ###   ########.fr       */
+/*   Updated: 2025/07/11 16:46:53 by andriamr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,6 @@ void	rrr(t_list **list_a, t_list **list_b)
 	*list_b = b;
 }
 
-long long	ft_atol(const char *s)
-{
-	long long	nb;
-	int			i;
-
-	nb = 0;
-	i = 0;
-	i += (s[i] == '-' || s[i] == '+');
-	while (s[i] <= '9' && s[i] >= '0')
-	{
-		nb = (nb * 10) + (s[i] - '0');
-		i++;
-	}
-	if (s[0] == '-')
-		return (-nb);
-	return (nb);
-}
-
 int	check_max(const char **av, int ac)
 {
 	int	i;
@@ -61,7 +43,7 @@ int	check_max(const char **av, int ac)
 			while (ft_isspace(av[a][i]))
 				i++;
 			if ((av[a][i] == '-' || av[a][i] == '+')
-				|| ft_isdigit(av[a][i]))
+				|| ft_digit(av[a][i]))
 			{
 				i += (av[a][i] == '+');
 				if (ft_atoi(&av[a][i]) != ft_atol(&av[a][i]))
@@ -90,6 +72,16 @@ t_list	*remove_list_last(t_list **nbr)
 	return (list);
 }
 
+static void	algo(t_list **a, t_list **b, int len)
+{
+	while (len > 3)
+	{
+		step1(a, b);
+		len = len_list(a);
+	}
+	step2(a, b);
+}
+
 int	main(int ac, const char **av)
 {
 	t_list	*list_a;
@@ -98,21 +90,18 @@ int	main(int ac, const char **av)
 	int		len;
 
 	list_b = NULL;
+	if (ac <= 1)
+		return (0);
+	if (chek_error_argv(ac, av))
+		return (write (2, "Error\n", 6), 0);
 	list_a = take_nbr(av, ac);
 	tmp = list_a;
-	if (chek_error_argv(ac, av) || check_repeat(&list_a))
-		return (write(1, "Error\n", 6), free_list(&list_a), 0);
+	if (check_repeat(&list_a) || check_max(av, ac))
+		return (write(2, "Error\n", 6), free_list(&list_a), 0);
 	if (list_is_unic(&list_a) || check_sort(&list_a))
 		return (free_list(&list_a), 0);
-	if (check_max(av, ac))
-		return (free_list(&tmp), 0);
 	len = len_list(&list_a);
 	list_a = list_to_rank(&list_a);
-	while (len > 3)
-	{
-		step1(&list_a, &list_b);
-		len = len_list(&list_a);
-	}
-	step2(&list_a, &list_b);
+	algo (&list_a, &list_b, len);
 	return (free_list(&tmp), 0);
 }
